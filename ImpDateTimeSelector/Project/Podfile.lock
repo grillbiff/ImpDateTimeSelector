@@ -1,0 +1,14 @@
+PODS:
+  - ImpDateTimeSelector (0.1.0)
+
+DEPENDENCIES:
+  - ImpDateTimeSelector (from `../ImpDateTimeSelector.podspec`)
+
+EXTERNAL SOURCES:
+  ImpDateTimeSelector:
+    :path: ../ImpDateTimeSelector.podspec
+
+SPEC CHECKSUMS:
+  ImpDateTimeSelector: c83f15b56492c626ba0a9163ac484496cc34b4dc
+
+COCOAPODS: 0.28.0
