@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DateTimeSelectorPad.h"
+#import "ImpDateTimeSelectorPad.h"
 
 @interface ViewController : UIViewController<DateTimeSelectorDelegate>
 {
@@ -15,11 +15,11 @@
     NSDateComponents *_currentDateComps;
 }
 
-@property (weak, nonatomic) IBOutlet DateTimeSelectorPad *yearSelector;
-@property (weak, nonatomic) IBOutlet DateTimeSelectorPad *monthSelector;
-@property (weak, nonatomic) IBOutlet DateTimeSelectorPad *daySelector;
-@property (weak, nonatomic) IBOutlet DateTimeSelectorPad *hourSelector;
-@property (weak, nonatomic) IBOutlet DateTimeSelectorPad *minuteSelector;
+@property (weak, nonatomic) IBOutlet ImpDateTimeSelectorPad *yearSelector;
+@property (weak, nonatomic) IBOutlet ImpDateTimeSelectorPad *monthSelector;
+@property (weak, nonatomic) IBOutlet ImpDateTimeSelectorPad *daySelector;
+@property (weak, nonatomic) IBOutlet ImpDateTimeSelectorPad *hourSelector;
+@property (weak, nonatomic) IBOutlet ImpDateTimeSelectorPad *minuteSelector;
 @property (weak, nonatomic) IBOutlet UILabel *dateTimeLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 - (IBAction)onSegmentedControlValueChanged:(id)sender;

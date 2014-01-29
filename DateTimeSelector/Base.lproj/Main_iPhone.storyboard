@@ -42,7 +42,7 @@
                                     <action selector="onSegmentedControlValueChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="5cE-RR-HlY"/>
                                 </connections>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1e-I9-Lre" customClass="DateTimeSelectorPad">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1e-I9-Lre" customClass="ImpDateTimeSelectorPad">
                                 <rect key="frame" x="128" y="440" width="64" height="128"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -60,7 +60,7 @@
                                     <constraint firstAttribute="height" constant="128" id="KUO-GN-3Tv"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faV-hA-nTE" customClass="DateTimeSelectorPad">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faV-hA-nTE" customClass="ImpDateTimeSelectorPad">
                                 <rect key="frame" x="64" y="440" width="64" height="128"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -78,7 +78,7 @@
                                     <constraint firstAttribute="width" constant="64" id="vXf-S3-SWT"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yI-2l-Bop" customClass="DateTimeSelectorPad">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yI-2l-Bop" customClass="ImpDateTimeSelectorPad">
                                 <rect key="frame" x="192" y="440" width="64" height="128"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -96,7 +96,7 @@
                                     <constraint firstAttribute="height" constant="128" id="bxi-l0-vEc"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="reG-PF-2dr" customClass="DateTimeSelectorPad">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="reG-PF-2dr" customClass="ImpDateTimeSelectorPad">
                                 <rect key="frame" x="0.0" y="440" width="64" height="128"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -116,7 +116,7 @@
                                     <constraint firstAttribute="height" constant="128" id="a2S-mI-Hf6"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Td9-gV-BCB" customClass="DateTimeSelectorPad">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Td9-gV-BCB" customClass="ImpDateTimeSelectorPad">
                                 <rect key="frame" x="256" y="440" width="64" height="128"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>

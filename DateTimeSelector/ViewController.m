@@ -54,6 +54,8 @@
     
     _currentDateComps = [[NSCalendar currentCalendar] components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute fromDate:[NSDate date]];
     [self updateDateTimeLabel];
+    
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -112,7 +114,7 @@
 
 #pragma mark - DateTimeSelectorDelegate
 
--(void)dateTimeSelector:(DateTimeSelectorPad *)dateTimeSelector onValueChanged:(NSInteger)value
+-(void)dateTimeSelector:(ImpDateTimeSelectorPad *)dateTimeSelector onValueChanged:(NSInteger)value
 {
     if(dateTimeSelector == _yearSelector)
         _currentDateComps.year = value;

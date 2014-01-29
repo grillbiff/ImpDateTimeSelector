@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Fatcal. All rights reserved.
 //
 
-#import "DateTimeSelectorView.h"
+#import "ImpDateTimeSelectorView.h"
 
-@implementation DateTimeSelectorView
+@implementation ImpDateTimeSelectorView
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -28,7 +28,7 @@
     for(int i=0;i<sizeof(types) / sizeof(ImpDateTimeType); i++)
     {
         ImpDateTimeType type = types[i];
-        DateTimeSelectorPad *pad = [[DateTimeSelectorPad alloc] init];
+        ImpDateTimeSelectorPad *pad = [[ImpDateTimeSelectorPad alloc] init];
         pad.dateTimeType = type;
         [pads addObject:pad];
     }
@@ -44,11 +44,11 @@
     [self setNeedsLayout];
 }
 
--(DateTimeSelectorPad *)selectorPadForDateTimeType:(ImpDateTimeType)type
+-(ImpDateTimeSelectorPad *)selectorPadForDateTimeType:(ImpDateTimeType)type
 {
     if(_selectorPads)
     {
-        for(DateTimeSelectorPad *pad in _selectorPads)
+        for(ImpDateTimeSelectorPad *pad in _selectorPads)
         {
             if(type == pad.dateTimeType)
                 return pad;
@@ -66,7 +66,7 @@
     {
         CGFloat padWidth = self.frame.size.width / [_selectorPads count];
         int i = 0;
-        for(DateTimeSelectorPad *pad in _selectorPads)
+        for(ImpDateTimeSelectorPad *pad in _selectorPads)
         {
             pad.frame = CGRectMake(i*padWidth , 0, padWidth, self.frame.size.height);
             i++;
@@ -76,19 +76,19 @@
 
 #pragma mark - DateTimeSelectorPadDelegate
 
--(void)dateTimeSelectorPad:(DateTimeSelectorPad *)dateTimeSelector onValueChanged:(NSInteger)value
+-(void)dateTimeSelectorPad:(ImpDateTimeSelectorPad *)dateTimeSelector onValueChanged:(NSInteger)value
 {
     if(_delegate && [_delegate respondsToSelector:@selector(dateTimeSelectorPad:onValueChanged:)])
         [_delegate dateTimeSelectorPad:dateTimeSelector onValueChanged:value];
 }
 
--(void)onShowValueLabel:(DateTimeSelectorPad *)dateTimeSelectorPad
+-(void)onShowValueLabel:(ImpDateTimeSelectorPad *)dateTimeSelectorPad
 {
     if(_delegate && [_delegate respondsToSelector:@selector(onShowValueLabel:)])
         [_delegate onShowValueLabel:dateTimeSelectorPad];
 }
 
--(void)onHideValueLabel:(DateTimeSelectorPad *)dateTimeSelectorPad
+-(void)onHideValueLabel:(ImpDateTimeSelectorPad *)dateTimeSelectorPad
 {
     if(_delegate && [_delegate respondsToSelector:@selector(onHideValueLabel:)])
         [_delegate onHideValueLabel:dateTimeSelectorPad];

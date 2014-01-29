@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Fatcal. All rights reserved.
 //
 
-#import "DateTimeSelectorPad.h"
+#import "ImpDateTimeSelectorPad.h"
 #import <QuartzCore/QuartzCore.h>
 
-@implementation DateTimeSelectorPad
+@implementation ImpDateTimeSelectorPad
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -182,8 +182,8 @@
     _valueLabel.text = [NSString stringWithFormat:@"%ld",resultValue];
     _valueLabel.center = CGPointMake(nowPoint.x, nowPoint.y - 80);
     
-    if(_delegate && [_delegate respondsToSelector:@selector(dateTimeSelector:onValueChanged:)])
-        [_delegate dateTimeSelector:self onValueChanged:(int)resultValue];
+    if(_delegate && [_delegate respondsToSelector:@selector(dateTimeSelectorPad:onValueChanged:)])
+        [_delegate dateTimeSelectorPad:self onValueChanged:(int)resultValue];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

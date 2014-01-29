@@ -18,16 +18,16 @@ typedef NS_OPTIONS(NSInteger, ImpDateTimeType) {
     ImpDateTimeTypeSecond = 1 << 5
 };
 
-@class DateTimeSelectorPad;
+@class ImpDateTimeSelectorPad;
 
 @protocol DateTimeSelectorDelegate <NSObject>
 @optional
--(void)dateTimeSelectorPad:(DateTimeSelectorPad *)dateTimeSelectorPad onValueChanged:(NSInteger)value;
--(void)onShowValueLabel:(DateTimeSelectorPad *)dateTimeSelectorPad;
--(void)onHideValueLabel:(DateTimeSelectorPad *)dateTimeSelectorPad;
+-(void)dateTimeSelectorPad:(ImpDateTimeSelectorPad *)dateTimeSelectorPad onValueChanged:(NSInteger)value;
+-(void)onShowValueLabel:(ImpDateTimeSelectorPad *)dateTimeSelectorPad;
+-(void)onHideValueLabel:(ImpDateTimeSelectorPad *)dateTimeSelectorPad;
 @end
 
-@interface DateTimeSelectorPad : UIView
+@interface ImpDateTimeSelectorPad : UIView
 {
     UILabel *_valueLabel;
 }

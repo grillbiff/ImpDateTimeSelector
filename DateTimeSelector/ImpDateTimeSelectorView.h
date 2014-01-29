@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DateTimeSelectorPad.h"
+#import "ImpDateTimeSelectorPad.h"
 
-@interface DateTimeSelectorView : UIView<DateTimeSelectorDelegate>
+@interface ImpDateTimeSelectorView : UIView<DateTimeSelectorDelegate>
 {
     NSArray *_selectorPads;
 }
@@ -17,7 +17,7 @@
 @property (nonatomic,readwrite) ImpDateTimeType dateTimeTypes;
 @property (nonatomic,weak) id<DateTimeSelectorDelegate>delegate;
 
--(DateTimeSelectorPad *)selectorPadForDateTimeType:(ImpDateTimeType)type;
+-(ImpDateTimeSelectorPad *)selectorPadForDateTimeType:(ImpDateTimeType)type;
 
 
 @end
