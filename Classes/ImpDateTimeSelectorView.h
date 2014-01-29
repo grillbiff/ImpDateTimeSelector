@@ -13,11 +13,14 @@
 {
 }
 
-@property (nonatomic,readwrite) ImpDateTimeType dateTimeTypes;
+//@property (nonatomic,readwrite) ImpDateTimeType *dateTimeTypes;
 @property (nonatomic,weak) id<ImpDateTimeSelectorDelegate>delegate;
 @property (nonatomic,readonly) NSArray *selectorPads;
 
 -(ImpDateTimeSelectorPad *)selectorPadForDateTimeType:(ImpDateTimeType)type;
+-(void)setDateTimeTypes:(ImpDateTimeType *)dateTimeTypes size:(int)size;
+
++(NSString *)labelNameFromDateTimeType:(ImpDateTimeType)type;
 
 
 @end

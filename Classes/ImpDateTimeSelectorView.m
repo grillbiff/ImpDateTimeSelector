@@ -19,17 +19,28 @@
     return self;
 }
 
--(void)setDateTimeTypes:(ImpDateTimeType)dateTimeTypes
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        
+    }
+    return self;
+    
+}
+
+-(void)setDateTimeTypes:(ImpDateTimeType *)dateTimeTypes size:(int)size
 {
     NSMutableArray *pads = [NSMutableArray array];
+
     
-    ImpDateTimeType types[] = {ImpDateTimeTypeYear,ImpDateTimeTypeMonth,ImpDateTimeTypeDay,ImpDateTimeTypeHour,ImpDateTimeTypeMinute,ImpDateTimeTypeSecond};
-    
-    for(int i=0;i<sizeof(types) / sizeof(ImpDateTimeType); i++)
+    for(int i=0;i < size; i++)
     {
-        ImpDateTimeType type = types[i];
+        ImpDateTimeType type = dateTimeTypes[i];
         ImpDateTimeSelectorPad *pad = [[ImpDateTimeSelectorPad alloc] init];
         pad.dateTimeType = type;
+        pad.delegate = self;
+        pad.textLabel.text = [ImpDateTimeSelectorView labelNameFromDateTimeType:type];
         [pads addObject:pad];
         [self addSubview:pad];
     }
@@ -103,5 +114,27 @@
     // Drawing code
 }
 */
+
++(NSString *)labelNameFromDateTimeType:(ImpDateTimeType)type
+{
+    switch (type) {
+        case ImpDateTimeTypeYear:
+            return @"Year";
+        case ImpDateTimeTypeMonth:
+            return @"Month";
+        case ImpDateTimeTypeDay:
+            return @"Day";
+        case ImpDateTimeTypeHour:
+            return @"Hour";
+        case ImpDateTimeTypeMinute:
+            return @"Minute";
+        case ImpDateTimeTypeSecond:
+            return @"Second";
+        case ImpDateTimeTypeNoType:
+            return nil;
+    }
+    
+    return nil;
+}
 
 @end
