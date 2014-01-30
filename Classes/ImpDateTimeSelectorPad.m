@@ -51,16 +51,22 @@
     _relative = NO;
     _wrapAround = YES;
     
-    _valueLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    //_valueLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    _valueLabel = [[UILabel alloc] init];
+    _valueLabel.translatesAutoresizingMaskIntoConstraints = NO;
     _valueLabel.textAlignment = NSTextAlignmentCenter;
-    _valueLabel.textColor = [UIColor redColor];
+    _valueLabel.textColor = [UIColor whiteColor];
+    _valueLabel.shadowColor = [UIColor colorWithWhite:0 alpha:.4];
+    _valueLabel.shadowOffset = CGSizeMake(1,1);
+    //    _valueLabel.textColor = [UIColor redColor];
     _valueLabel.font = [UIFont boldSystemFontOfSize:18.0];
-    _valueLabel.layer.borderColor = [[UIColor redColor] CGColor];
-    _valueLabel.layer.borderWidth = 2.0,
-    _valueLabel.layer.cornerRadius = 25;
+//    _valueLabel.layer.borderColor = [[UIColor redColor] CGColor];
+//    _valueLabel.layer.borderWidth = 2.0,
+//    _valueLabel.layer.cornerRadius = 25;
+//
     _valueLabel.layer.masksToBounds = YES;
-    _valueLabel.layer.backgroundColor = [[UIColor colorWithWhite:0 alpha:.7] CGColor];
-    
+    //_valueLabel.layer.backgroundColor = [[UIColor colorWithWhite:0 alpha:.7] CGColor];
+    _valueLabel.backgroundColor = [UIColor clearColor];
     
     self.translatesAutoresizingMaskIntoConstraints = NO;
 
@@ -69,7 +75,6 @@
     [self addSubview:_textLabel];
     
     _valueLabel.hidden = YES;
-    [self addSubview:_valueLabel];
 }
 
 -(void)setDateTimeType:(ImpDateTimeType)dateTimeType
@@ -116,7 +121,8 @@
     
     if(!_showDefaultValueLabel)
         return;
-        
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:_valueLabel];
     _valueLabel.hidden = NO;
     
     CATransform3D trans =  CATransform3DIdentity;
@@ -148,6 +154,7 @@
 
     } completion:^(BOOL finished) {
         _valueLabel.hidden = YES;
+        [_valueLabel removeFromSuperview];
     }];
 
     
@@ -190,8 +197,34 @@
         resultValue = resultValue - (resultValue % _step);
     }
     
-    _valueLabel.text = [NSString stringWithFormat:@"%d",resultValue];
-    _valueLabel.center = CGPointMake(nowPoint.x, nowPoint.y - 80);
+    if(_valueLabel)
+    {
+        if(ImpDateTimeTypeMonth == _dateTimeType)
+        {
+            NSDateComponents *dateComps = [[NSDateComponents alloc] init];
+            dateComps.month = resultValue;
+            _valueLabel.text = [[ImpDateTimeSelectorPad monthFormatter] stringFromDate:[[NSCalendar currentCalendar] dateFromComponents:dateComps]];
+        }
+        else if(ImpDateTimeTypeHour == _dateTimeType)
+        {
+            NSDateComponents *dateComps = [[NSDateComponents alloc] init];
+            dateComps.hour = resultValue;
+            _valueLabel.text = [[ImpDateTimeSelectorPad hourFormatter] stringFromDate:[[NSCalendar currentCalendar] dateFromComponents:dateComps]];
+        }
+        /*
+        else if(ImpDateTimeTypeDay == _dateTimeType)
+        {
+            NSDateComponents *dateComps = [[NSDateComponents alloc] init];
+            dateComps.day = resultValue;
+            _valueLabel.text = [[ImpDateTimeSelectorPad dayFormatter] stringFromDate:[[NSCalendar currentCalendar] dateFromComponents:dateComps]];
+        }
+         */
+        else
+            _valueLabel.text = [NSString stringWithFormat:@"%d",resultValue];
+    
+        CGPoint displayPoint = [touches.anyObject locationInView:[UIApplication sharedApplication].keyWindow];
+        _valueLabel.center = CGPointMake(displayPoint.x, displayPoint.y - 80);
+    }
     
     if(_delegate && [_delegate respondsToSelector:@selector(dateTimeSelectorPad:onValueChanged:)])
         [_delegate dateTimeSelectorPad:self onValueChanged:(int)resultValue];
@@ -219,6 +252,39 @@
     [self hideValueLabel];
 }
 
++(NSDateFormatter *)monthFormatter
+{
+    static NSDateFormatter *monthFormatter;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        monthFormatter = [[NSDateFormatter alloc] init];
+        monthFormatter.dateFormat = @"MMMM";
+    });
+    
+    return monthFormatter;
+}
+
++(NSDateFormatter *)hourFormatter
+{
+    static NSDateFormatter *hourFormatter;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        hourFormatter = [[NSDateFormatter alloc] init];
+        hourFormatter.dateFormat = @"hh";
+    });
+    return hourFormatter;
+}
+
++(NSDateFormatter *)dayFormatter
+{
+    static NSDateFormatter *dayFormatter;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        dayFormatter = [[NSDateFormatter alloc] init];
+        dayFormatter.dateFormat = @"d";
+    });
+    return dayFormatter;
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
